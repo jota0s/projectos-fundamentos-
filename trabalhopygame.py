@@ -1,320 +1,52 @@
-#importar as bibliotecas para o processo random e de fila
+##################################################################################importar as bibliotecas para o processo random e de fila#########################################################################################################
 import random
 from collections import deque
-#defenir as classes dos items 
-money = 10
-
-class item:
-    def __init__(self, Name ,price):
-        self.Name = Name
-        self.price = price
-
-    def display(self):
-        print("Name: "+ self.Name)
-        print("price to sell: " + str(self.price))
-        
-class sword(item):
-    def __init__(self):
-        super().__init__(self)
-    
-    def display(self):
-        print("price to sell: " + str(self.price))        
-    
-class armingsword(sword):
-    def __init__(self):
-        super().__init__("arming sword", 3500)
-        print(self.Name + str(self.price))
-        
-    def display(self):
-        return super().display()
-
-class dagger(sword): 
-    def __init__(self):
-        super().__init__("dagger", 2500)
-        print(self.Name + str(self.price))
-        
-    def display(self):
-      return super().display()
-
-class  steelsword(sword):
-    def __init__(self):
-        super().__init__("steel sword" , 5000)
-        print(self.Name + str(self.price))
-
-    def display(self):
-      return super().display()
-
-       
-class Bow(item):
-    def __init__(self):
-        super().__init__(self)
-    
-    def display(self):
-        print("price to sell: " + str(self.price))    
-
-class  crossbow(Bow):
-    def __init__(self):
-        super().__init__("crossbow" , 2000)
-        print(self.Name + str(self.price))
-    
-    def display(self):
-      return super().display()
-
-class  firebow(Bow):
-    def __init__(self):
-        super().__init__("firebow" , 3050)
-        print(self.Name + str(self.price))
-    
-    def display(self):
-      return super().display()
-
-class  longbow(Bow):
-    def __init__(self):
-        super().__init__("longbow" , 3950)
-        print(self.Name + str(self.price))
-    
-    def display(self):
-      return super().display()
-
-class spear(item):
-    def __init__(self):
-        super().__init__(self)
-    
-    def display(self):
-        print("price to sell: " + str(self.price)) 
-
-class  icespear(spear):
-    def __init__(self):
-        super().__init__("ice spear" , 6300)
-        print(self.Name + str(self.price))
-    
-    def display(self):
-      return super().display()
+from lista_classes import *
 
 
-class  firespear(spear):
-    def __init__(self):
-        super().__init__("fire spear" , 6200)
-        print(self.Name + str(self.price))
-    
-    def display(self):
-      return super().display()
+#########################################################################################definir variaveis e dicionarios###########################################################################################################################
+money=10
+gamecycle=True
+material_inventory =  {
+    "wood" : 0,
+    "iron" : 0,
+    "silver" : 0,
+    "leather" : 0,
+    "gold" : 0,
+    "fire in a bottle" : 0,
+    "ice in a bottle" : 0,
+    "electricity in a bottle" : 0
+}
 
-class powerspear(spear):
-    def __init__(self):
-        super().__init__("power spear" , 7000)
-        print(self.Name + str(self.price))
-    
-    def display(self):
-      return super().display()
+while material_inventory["wood"] <500:
+    material_inventory["wood"] += 1
+    print(material_inventory)
 
-class Armor(item):
-    def __init__(self):
-        super().__init__(self)
+while material_inventory["iron"] <500:
+    material_inventory["iron"] += 1
+    print(material_inventory)
 
-    def display(self):
-        print("price to sell: " + str(self.price)) 
+while material_inventory["silver"] <500:
+    material_inventory["silver"] += 1
+    print(material_inventory)
 
-class helm(Armor):
-    def __init__(self):
-        super().__init__(self)
+while material_inventory["leather"] <500:
+    material_inventory["leather"] += 1
+    print(material_inventory)
 
-    def display(self):
-        print("price to sell: " + str(self.price)) 
+while material_inventory["gold"] <500:
+    material_inventory["gold"] += 1
+    print(material_inventory)
 
-class bronzehelm(Armor):
-    def __init__(self):
-        super().__init__("bronze helm" , 3000)
-        print(self.Name + str(self.price))
-    
-    def display(self):
-      return super().display()
+while material_inventory["ice in a bottle"] <500:
+    material_inventory["ice in a bottle"] += 1
+    print(material_inventory)
 
-class silverhelm(Armor):
-    def __init__(self):
-        super().__init__("silver helm" , 3500)
-        print(self.Name + str(self.price))
-    
-    def display(self):
-      return super().display()
+while material_inventory["electricity in a bottle"] <500:
+    material_inventory["electricity in a bottle"] += 1
+    print(material_inventory)
 
-class ironhelm(Armor):
-    def __init__(self):
-        super().__init__("iron helm" , 3300)
-        print(self.Name + str(self.price))
-    
-    def display(self):
-      return super().display()
-
-class Chestplate(Armor):
-    def __init__(self):
-        super().__init__(self)
-
-    def display(self):
-        print("price to sell: " + str(self.price))
-
-class bronzechestplate(Armor):
-    def __init__(self):
-        super().__init__("bronze chestplate" , 5000)
-        print(self.Name + str(self.price))
-    
-    def display(self):
-      return super().display()
-
-class ironchestplate(Armor):
-    def __init__(self):
-        super().__init__("iron chestplate" , 5100)
-        print(self.Name + str(self.price))
-    
-    def display(self):
-      return super().display()
-
-class silverchestplate(Armor):
-    def __init__(self):
-        super().__init__("silver chestplate" , 5500)
-        print(self.Name + str(self.price))
-    
-    def display(self):
-      return super().display()
-
-class feetarmor(Armor):
-    def __init__(self):
-        super().__init__(self)
-
-    def display(self):
-        print("price to sell: " + str(self.price))
-
-class bronzefeetarmor(Armor):
-    def __init__(self):
-        super().__init__("bronze feet armor" , 2200)
-        print(self.Name + str(self.price))
-
-    def display(self):
-        return super().display() 
-
-class ironfeetarmor(Armor):
-    def __init__(self):
-        super().__init__("iron feet armor" , 2600)
-        print(self.Name + str(self.price))
-
-    def display(self):
-        return super().display()
-
-class silverfeetarmor(Armor):
-    def __init__(self):
-        super().__init__("silver feet armor" , 3000)
-        print(self.Name + str(self.price))
-
-    def display(self):
-        return super().display() 
-
-class Hammer(item):
-    def __init__(self):
-        super().__init__(self)  
-
-    def display(self):
-        print("price to sell: " + str(self.price)) 
-
-class Bronzehammer(Hammer):
-    def __init__(self):
-        super().__init__("Bronze hammer" , 4500)
-        print(self.Name + str(self.price))
-
-    def display(self):
-        return super().display()
-
-class ironhammer(Hammer):
-    def __init__(self):
-        super().__init__("iron hammer" , 5500)
-        print(self.Name + str(self.price))
-
-    def display(self):
-        return super().display()
-
-class silverhammer(Hammer):
-    def __init__(self):
-        super().__init__("silver hammer" , 5900)
-        print(self.Name + str(self.price))
-
-    def display(self):
-        return super().display()
-
-class materials:
-    def __init__(self, Name ,price):
-        self.Name = Name
-        self.price = price
-
-    def display(self):
-        print("Name: "+ self.Name)
-        print("price to sell: " + str(self.price))
-
-
-class wood(materials):
-    def __init__(self):
-        super().__init__("wood" , 500)
-        print(self.Name + str(self.price))
-
-    def display(self):
-        return super().display()
-
-class iron(materials):
-    def __init__(self):
-        super().__init__("wood" , 1000)
-        print(self.Name + str(self.price))
-
-    def display(self):
-        return super().display()
-
-
-class silver(materials):
-    def __init__(self):
-        super().__init__("wood" , 1200)
-        print(self.Name + str(self.price))
-
-    def display(self):
-        return super().display()
-
-class leather(materials):
-    def __init__(self):
-        super().__init__("leather" , 250)
-        print(self.Name + str(self.price))
-
-    def display(self):
-        return super().display()
-
-class gold(materials):
-    def __init__(self):
-        super().__init__("gold" , 1500)
-        print(self.Name + str(self.price))
-
-    def display(self):
-        return super().display()
-
-class fireinabottle(materials):
-    def __init__(self):
-        super().__init__("fire in a bottle" , 750)
-        print(self.Name + str(self.price))
-
-    def display(self):
-        return super().display()
-
-class iceinabottle(materials):
-    def __init__(self):
-        super().__init__("ice in a bottle" , 750)
-        print(self.Name + str(self.price))
-
-    def display(self):
-        return super().display()
-
-class electricityinabottle(materials):
-    def __init__(self):
-        super().__init__("electricity in a bottle" , 750)
-        print(self.Name + str(self.price))
-
-    def display(self):
-        return super().display()
-
-#function for verify money
+################################################################################################function for verify money#########################################################################################################################
 def verify_money(money):
 
     if (money==0):
@@ -326,7 +58,7 @@ def verify_money(money):
 print("Welcome to this game")
 
 #cycle one day
-while money<100000 and money>0:
+while gamecycle == True:
     while (True):
         print("show items to buy")
         print("show items price")
