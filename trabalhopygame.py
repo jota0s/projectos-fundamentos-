@@ -2,6 +2,8 @@
 import random
 from collections import deque
 #defenir as classes dos items 
+money = 10
+
 class item:
     def __init__(self, Name ,price):
         self.Name = Name
@@ -311,6 +313,61 @@ class electricityinabottle(materials):
 
     def display(self):
         return super().display()
+
+#function for verify money
+def verify_money(money):
+
+    if (money==0):
+        print("you don't have money")  
+
+    else:
+         print("you have: " + money) 
+
+print("Welcome to this game")
+
+#cycle one day
+while money<100000 and money>0:
+    while (True):
+        print("show items to buy")
+        print("show items price")
+
+        x=input("")
+
+        if x=="No" or x=="no":
+            break
+    print("acabou") 
+
+    while (True):
+        print("show items to Crafting")
+        print(" ")
+
+        x=input("")
+
+        if x=="No" or x=="no":
+            break
+    print("acabou")   
+
+    while (True):
+        print("show items to sell")
+        print(" ")
+
+        x=input("")
+
+        if x=="No" or x=="no":
+            break
+    print("acabou")   
+
+
+        
+
+               
+
+
+
+
+
+
+
 
 
 
